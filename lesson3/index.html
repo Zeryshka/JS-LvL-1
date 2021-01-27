@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок №3</title>
+</head>
+
+<body>
+    <!-- Задание 1 -->
+    <script>
+        document.write("Первое задание<br>");
+        let i = 1;
+        while (i <= 100) {
+            let j = 2;
+            while (j <= 100) {
+                if (i % j == 0 && i != j) {
+                    document.write(i + ' ');
+                    break;
+                }
+                j++;
+            }
+            i++;
+        }
+    </script>
+
+    <!-- Задание 2 и 3 вместе. Подсчёт корзины -->
+    <script>
+        document.write("<br><br>Задание 2 и 3 вместе. Подсчёт корзины<br>");
+        let products = [[5, 255], [2, 318], [5, 481], [4, 958], [9, 58]]; // 1 значение - кол-во, 2 значения - цена в руб.
+
+        countBasketPrice(products);
+
+        function countBasketPrice(products) {
+            var sum = 0;
+            products.forEach(val => {
+                sum += val[0] * val[1];
+            });
+            document.write(sum + ' руб.');
+        }
+    </script>
+
+    <!-- Задание 4 -->
+    <script>
+        document.write("<br><br>Задание 4<br>");
+        let numbers = 0;
+
+        for (numbers; numbers <= 9; document.write(numbers++)) { }
+    </script>
+
+    <!-- Задание 5 -->
+    <script>
+        document.write("<br><br>Задание 5<br>Ответ в консоле");
+
+        let string = 'x';
+        for (let i = 1; i <= 20; i++) {
+            console.log(string);
+            string += 'x';
+        }
+    </script>
+
+</body>
+
+</html>
