@@ -38,7 +38,9 @@
 
 <script>
     var number = [8, 7, 6, 5, 4, 3, 2, 1];
+    var numberReverse = [1, 2, 3, 4, 5, 6, 7, 8];
     var symbol = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    var symbolReverse = ['H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'];
     var figures = ['ладья', 'конь', 'ферзь', 'король', 'королева', 'ферзь', 'конь', 'ладья', 'пешка', 'пешка', 'пешка', 'пешка', 'пешка', 'пешка', 'пешка', 'пешка'];
 
     var table = document.createElement("table");
@@ -61,12 +63,22 @@
                         td.className = "black";
                     }
                 } else {
-                    if (j == 1 || j == 10) {
+                    if (j == 1) {
                         td.className = "number";
                         td.innerHTML = number[i - 2];
-                    } else {
+                    } else if (i == 10) {
                         td.className = "symbol";
                         td.innerHTML = symbol[j - 2];
+                    }
+
+                    if (j == 10) {
+                        td.style.transform = "rotate(0.5turn)";
+                        td.className = "number";
+                        td.innerHTML = numberReverse[i - 2];
+                    } else if (i == 1) {
+                        td.style.transform = "rotate(0.5turn)";
+                        td.className = "symbol";
+                        td.innerHTML = symbolReverse[j - 2];
                     }
                 }
             }
