@@ -1,0 +1,91 @@
+<body>
+</body>
+
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: whitesmoke;
+    }
+
+    table {
+        border-spacing: 0;
+    }
+
+    tr,
+    td {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        color: white;
+    }
+
+    .black {
+        background-color: #B58763;
+    }
+
+    .white {
+        background-color: #F0DAB5;
+    }
+
+    .number,
+    .symbol {
+        background-color: #732121;
+        align-items: center;
+    }
+</style>
+
+<script>
+    var number = [8, 7, 6, 5, 4, 3, 2, 1];
+    var numberReverse = [1, 2, 3, 4, 5, 6, 7, 8];
+    var symbol = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    var symbolReverse = ['H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'];
+    var figures = ['ладья', 'конь', 'ферзь', 'король', 'королева', 'ферзь', 'конь', 'ладья', 'пешка', 'пешка', 'пешка', 'пешка', 'пешка', 'пешка', 'пешка', 'пешка'];
+
+    var table = document.createElement("table");
+    for (var i = 1; i < 11; i++) {
+        var tr = document.createElement('tr');
+        for (var j = 1; j < 11; j++) {
+            var td = document.createElement('td');
+
+            if ((i != 1 && i != 10) || (j != 1 && j != 10)) { // убираю боковые квадраты
+                if (j != 1 && j != 10 && i != 1 && i != 10) {
+                    if (i == 2) { td.style.backgroundImage = "url('images/black/" + figures[j - 2] + ".png')"; td.style.backgroundSize = '50px'; }
+                    if (i == 3) { td.style.backgroundImage = "url('images/black/" + figures[j + 6] + ".png')"; td.style.backgroundSize = '50px'; }
+
+                    if (i == 9) { td.style.backgroundImage = "url('images/white/" + figures[j - 2] + ".png')"; td.style.backgroundSize = '50px'; }
+                    if (i == 8) { td.style.backgroundImage = "url('images/white/" + figures[j + 6] + ".png')"; td.style.backgroundSize = '50px'; }
+
+                    if (i % 2 == j % 2) {
+                        td.className = "white";
+                    } else {
+                        td.className = "black";
+                    }
+                } else {
+                    if (j == 1) {
+                        td.className = "number";
+                        td.innerHTML = number[i - 2];
+                    } else if (i == 10) {
+                        td.className = "symbol";
+                        td.innerHTML = symbol[j - 2];
+                    }
+
+                    if (j == 10) {
+                        td.style.transform = "rotate(0.5turn)";
+                        td.className = "number";
+                        td.innerHTML = numberReverse[i - 2];
+                    } else if (i == 1) {
+                        td.style.transform = "rotate(0.5turn)";
+                        td.className = "symbol";
+                        td.innerHTML = symbolReverse[j - 2];
+                    }
+                }
+            }
+
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    document.body.appendChild(table);
+</script>
