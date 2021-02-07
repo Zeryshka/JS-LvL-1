@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок №6</title>
+</head>
+
+<body>
+    <!-- <img src="https://via.placeholder.com/150/000000?text=Small+1"> -->
+    <!-- <img src="https://via.placeholder.com/300/000000?text=Big+1" alt=""> -->
+
+    <!-- Задание №1 -->
+    <img src="https://via.placeholder.com/150/000000?text=Small+1">
+    <img src="https://via.placeholder.com/150/0000FF?text=Small+2">
+    <img src="https://via.placeholder.com/150/008000?text=Small+3">
+
+    <div id="bigImage"></div>
+
+    <script>
+        var images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener("click", bigImage);
+        });
+
+        var bigImage = document.createElement('img');
+        var bigSrc = [
+            'https://via.placeholder.com/450/000000?text=Big+1',
+            'https://via.placeholder.com/450/0000FF?text=Big+2',
+            'https://via.placeholder.com/450/008000?text=Big+3',
+        ];
+
+        function bigImage(e) {
+            for (let i = 1; i <= images.length; i++) {
+                if (images[i - 1] == e.target) {
+                    bigImage.src = bigSrc[i - 1];
+                }
+            }
+
+            document.getElementById('bigImage').appendChild(bigImage);
+        }
+    </script>
+</body>
+
+</html>
